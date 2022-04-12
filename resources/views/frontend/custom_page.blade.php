@@ -37,24 +37,18 @@
 
 @section('content')
 
-<section class="page-header">
-    <div class="overly"></div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-6">
-          <div class="content text-center">
-            <h1 class="mb-3">{{$page->title}}</h1>
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb bg-transparent justify-content-center">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="{{route('custom-pages.show_custom_page', $page->slug)}}"></a> {{$page->title}}</li>
-              </ol>
-            </nav>
+<div class="breacrumb-section">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="breadcrumb-text">
+                  <a href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
+                  <span>{{$page->title}}</span>
+              </div>
           </div>
-        </div>
       </div>
-    </div>
-</section>
+  </div>
+</div>
 
 <section class="about section">
     <div class="container">

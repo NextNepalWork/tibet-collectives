@@ -36,7 +36,7 @@
                     <a href="{{ $generalsetting->facebook }}"><i class="ti-facebook"></i></a>
                     <a href="{{ $generalsetting->twitter }}"><i class="ti-twitter-alt"></i></a>
                     <a href="{{ $generalsetting->instagram }}"><i class="ti-instagram"></i></a>
-                    <a href="#"><i class="ti-pinterest"></i></a>
+                    <a href="{{ $generalsetting->youtube }}"><i class="fa fa-youtube"></i></a>
                 </div>
             </div>
         </div>
@@ -59,29 +59,25 @@
                 </div>
                 <div class="col-lg-7 col-md-7">
                     <div class="advanced-search">
-                        {{-- <button type="button" class="category-btn">All Categories</button> --}}
                         <div class="input-group">
                             <form action="{{ route('search') }}" method="GET" class="search-form">
-                                
                                 <input class="search_input" type="text" aria-label="Search" id="search" name="q" placeholder="Search..." autocomplete="off" />
                                 <button type="submit"> <i class="ti-search"></i></button>
                                         
-                                    <div class="typed-search-box d-none">
-                                        <div class="search-preloader">
-                                            <div class="loader">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                            </div>
-                                        </div>
-                                        <div class="search-nothing d-none">
-                                        </div>
-                                        <div id="search-content">
+                                <div class="typed-search-box d-none">
+                                    <div class="search-preloader">
+                                        <div class="loader">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
                                         </div>
                                     </div>
+                                    <div class="search-nothing d-none">
+                                    </div>
+                                    <div id="search-content">
+                                    </div>
+                                </div>
                             </form>
-                            {{-- <input type="text" placeholder="What do you need?">
-                            <button type="button"><i class="ti-search"></i></button> --}}
                         </div>
                     </div>
                 </div>
@@ -205,6 +201,19 @@
                         </div>
                     </li>
                     <li class="{{ Route::is('home') ? 'active' : '' }}"><a href="{{route('home')}}">Home</a></li>
+                    @php
+                    $about=\App\Page::where('slug','about')->first();
+                    if ($about == null) {
+                        $about = new \App\Page();
+                        $about->title='About';
+                        $about->slug='about';
+                        $about->content='content';
+                        $about->save();
+                    }
+                @endphp
+                <li class="{{ Route::is('custom-pages.show_custom_page') ? 'active' : '' }}">
+                    <a href="{{route('custom-pages.show_custom_page',$about->slug)}}">About Us</a>
+                </li>
                     <li class="{{ Route::is('products') ? 'active' : '' }}"><a href="{{route('products')}}">Collection</a></li>
                     {{-- <li><a href="dashboard.html">Dashboard</a></li> --}}
                     <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{route('contact')}}">Contact</a></li>

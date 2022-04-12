@@ -139,6 +139,16 @@
                         @csrf
                         <div class="panel-body">
                             <div class="form-group">
+                                <label class="col-sm-3" for="url">{{__('Top Categories (Max 10)')}}</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control demo-select2-max-10" name="top_categories[]" multiple required>
+                                        @foreach (\App\Category::all() as $key => $category)
+                                            <option value="{{ $category->id }}" @if($category->top == 1) selected @endif>{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-sm-3" for="url">{{__('Top Brands (Max 10)')}}</label>
                                 <div class="col-sm-9">
                                     <select class="form-control demo-select2-max-10" name="top_brands[]" multiple required>
