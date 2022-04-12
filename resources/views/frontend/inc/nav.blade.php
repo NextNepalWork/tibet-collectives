@@ -2,11 +2,13 @@
     $generalsetting = \App\GeneralSetting::first();
 @endphp
 <header class="header-section">
+    @if(Route::is('home'))
     <div class="video-wrapper">
         <video loop autoplay muted style="width: 100%;">
             <source src="{{asset('frontend/assets/video/banner.mp4')}}" type="video/mp4">
         </video>
     </div>
+    @endif
     <div class="header-top">
         <div class="container">
             <div class="ht-left">
@@ -105,17 +107,13 @@
                                 <span class="nav-box-number">0</span>
                                 @endif
                             </a>
-                            {{-- <a href="#">
-                                <i class="icon_bag_alt"></i>
-                                <span>3</span>
-                            </a> --}}
                             <div class="cart-hover">
+                                @if(Session::has('cart'))
                                 <div class="select-items">
                                     
+                                    @if(count($cart = Session::get('cart')) > 0)
                                     <table>
                                         <tbody>
-                                            @if(Session::has('cart'))
-                                                @if(count($cart = Session::get('cart')) > 0)
                                                 
                                                     @php
                                                         $total = 0;
@@ -136,10 +134,11 @@
                                                                 @else
                                                                     <img class="" src="{{asset('frontend/images/placeholder.jpg')}}" alt="{{$product->name}}">
                                                                 @endif
+                                                            </td>
 
                                                             <td class="si-text">
                                                                 <div class="product-selected">
-                                                                    <p>{{ single_price($cartItem['price']) }}</p>
+                                                                    <p>{{ single_price($cartItem['price']) }} x {{ $cartItem['quantity'] }} </p>
                                                                     <h6>{{$product->name}}</h6>
                                                                 </div>
                                                             </td>
@@ -147,36 +146,40 @@
                                                         </tr>
 
                                                     @endforeach
-                                                    <div class="select-total">
-                                                        <span>Total:</span>
-                                                        <h5>{{ single_price($total) }}</h5>
-                                                    </div>
-                                                    <div class="select-button">
-                                                        <a href="{{ route('cart') }}" class="primary-btn view-card">VIEW CART</a>
-                                                        @if (Auth::check())
-
-                                                        <a href="{{ route('checkout.shipping_info') }}" class="primary-btn checkout-btn">CHECK OUT</a>
-                                                        @endif
-                                                    </div>
-                                                @else
-                                                <div class="media">
-                                                    <span class="h6">Your Cart Is Empty</span>
-                                                </div>
-                                                @endif
-                                            @else
-                                                <div class="media">
-                                                    <span class="h6">Your Cart Is Empty</span>
-                                                </div>
-                                            @endif
-                                            
+                                                     
                                         </tbody>
                                     </table>
                                 </div>
+                                <div class="select-total">
+                                    <span>Total:</span>
+                                    <h5>{{ single_price($total) }}</h5>
+                                </div>
+                                <div class="select-button">
+                                    <a href="{{ route('cart') }}" class="primary-btn view-card">VIEW CART</a>
+                                    @if (Auth::check())
+
+                                    <a href="{{ route('checkout.shipping_info') }}" class="primary-btn checkout-btn">CHECK OUT</a>
+                                    @endif
+                                </div>
+                                    @else
+                                        <div class="media">
+                                            <span class="h6">Your Cart Is Empty</span>
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="media">
+                                        <span class="h6">Your Cart Is Empty</span>
+                                    </div>
+                                @endif
 
 
                             </div>
                         </li>
-                        <li class="cart-price">$150.00</li>
+                        {{-- @if (Session::has('cart'))
+                            
+                            
+                        <li class="cart-price">{{ single_price($total) }}</li>
+                        @endif --}}
                     </ul>
                 </div>
             </div>
@@ -201,10 +204,10 @@
                             </div>
                         </div>
                     </li>
-                    <li class="active"><a href="{{route('home')}}">Home</a></li>
-                    <li><a href="{{route('products')}}">Collection</a></li>
+                    <li class="{{ Route::is('home') ? 'active' : '' }}"><a href="{{route('home')}}">Home</a></li>
+                    <li class="{{ Route::is('products') ? 'active' : '' }}"><a href="{{route('products')}}">Collection</a></li>
                     {{-- <li><a href="dashboard.html">Dashboard</a></li> --}}
-                    <li><a href="{{route('contact')}}">Contact</a></li>
+                    <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{route('contact')}}">Contact</a></li>
                     <li><a href="#">My Account</a>
                         <ul class="dropdown p-0">
                             @auth

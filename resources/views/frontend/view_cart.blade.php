@@ -1,24 +1,19 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-<section class="page-header">
-    <div class="overly"></div>
+
+<div class="breacrumb-section">
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="content text-center">
-                    <h1 class="mb-3">Cart</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb bg-transparent justify-content-center">
-                            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><a href="{{route('cart')}}">Cart</a></li>
-                        </ol>
-                    </nav>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
+                    <span>Cart</span>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>
 
 <section id="order_list_top" class="py-4">
     <div class="container">
@@ -27,7 +22,7 @@
           {{-- <a href="cart.html"> --}}
             <div class="img_order_list ">
               <div class="img_block_icon">
-                <img src="{{asset('frontend/assets/images/cart/cart.svg')}}" class="img-fluid" alt="">
+                <img src="{{asset('frontend/assets/cart/cart.svg')}}" class="img-fluid" alt="">
               </div>
               <div class="content_img ">
                 <h6 class="active-item"> 1.My Cart</h6>
@@ -39,7 +34,7 @@
           {{-- <a href="shipping.html"> --}}
             <div class="img_order_list">
               <div class="img_block_icon">
-                <img src="{{asset('frontend/assets/images/cart/map.svg')}}" class="img-fluid" alt="">
+                <img src="{{asset('frontend/assets/cart/map.svg')}}" class="img-fluid" alt="">
               </div>
               <div class="content_img">
                 <h6 class=""> 2.Shipping Info</h6>
@@ -51,7 +46,7 @@
           {{-- <a href="delivery.html"> --}}
             <div class="img_order_list">
               <div class="img_block_icon">
-                <img src="{{asset('frontend/assets/images/cart/delivery_new.svg')}}" class="img-fluid" alt="">
+                <img src="{{asset('frontend/assets/cart/delivery_new.svg')}}" class="img-fluid" alt="">
               </div>
               <div class="content_img">
                 <h6 class=""> 3. Delivery Info</h6>
@@ -63,7 +58,7 @@
           {{-- <a href="payment.html"> --}}
             <div class="img_order_list">
               <div class="img_block_icon">
-                <img src="{{asset('frontend/assets/images/cart/payment.svg')}}" class="img-fluid" alt="">
+                <img src="{{asset('frontend/assets/cart/payment.svg')}}" class="img-fluid" alt="">
               </div>
               <div class="content_img">
                 <h6 class=""> 4. Payment</h6>
@@ -75,7 +70,7 @@
           {{-- <a href="order-success.html"> --}}
             <div class="img_order_list">
               <div class="img_block_icon">
-                <img src="{{asset('frontend/assets/images/cart/confirmation.svg')}}" class="img-fluid" alt="">
+                <img src="{{asset('frontend/assets/cart/confirmation.svg')}}" class="img-fluid" alt="">
               </div>
               <div class="content_img">
                 <h6 class=""> 5.Confirmation</h6>
@@ -86,66 +81,6 @@
       </div>
     </div>
 </section>
-    {{-- <section class="slice-xs sct-color-2 border-bottom">
-        <div class="container container-sm">
-            <div class="row cols-delimited justify-content-center">
-                <div class="col">
-                    <div class="icon-block icon-block--style-1-v5 text-center active">
-                        <div class="block-icon mb-0">
-                            <i class="la la-shopping-cart"></i>
-                        </div>
-                        <div class="block-content d-none d-md-block">
-                            <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">1. {{__('My Cart')}}</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="icon-block icon-block--style-1-v5 text-center">
-                        <div class="block-icon c-gray-light mb-0">
-                            <i class="la la-map-o"></i>
-                        </div>
-                        <div class="block-content d-none d-md-block">
-                            <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">2. {{__('Shipping info')}}</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="icon-block icon-block--style-1-v5 text-center">
-                        <div class="block-icon mb-0 c-gray-light">
-                            <i class="la la-truck"></i>
-                        </div>
-                        <div class="block-content d-none d-md-block">
-                            <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">3. {{__('Delivery info')}}</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="icon-block icon-block--style-1-v5 text-center">
-                        <div class="block-icon c-gray-light mb-0">
-                            <i class="la la-credit-card"></i>
-                        </div>
-                        <div class="block-content d-none d-md-block">
-                            <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">4. {{__('Payment')}}</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="icon-block icon-block--style-1-v5 text-center">
-                        <div class="block-icon c-gray-light mb-0">
-                            <i class="la la-check-circle"></i>
-                        </div>
-                        <div class="block-content d-none d-md-block">
-                            <h3 class="heading heading-sm strong-300 c-gray-light text-capitalize">5. {{__('Confirmation')}}</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 
 
     <section class="py-4 gry-bg" id="cart-summary">
@@ -246,15 +181,15 @@
                         <div class="row align-items-center pt-4">
                             <div class="col-md-6">
                                 <a href="{{ route('home') }}" class="link link--style-3">
-                                    <i class="la la-mail-reply"></i>
+                                    <i class="fa fa-reply-all"></i>
                                     {{__('Return to shop')}}
                                 </a>
                             </div>
                             <div class="col-md-6 text-right">
                                 @if(Auth::check())
-                                    <a href="{{ route('checkout.shipping_info') }}" class="btn btn-main mb-3 py-2 px-3">{{__('Continue to Shipping')}}</a>
+                                    <a href="{{ route('checkout.shipping_info') }}" class="primary-btn py-2">{{__('Continue to Shipping')}}</a>
                                 @else
-                                    <button class="btn btn-main mb-3 py-2 px-3" onclick="showCheckoutModal()">{{__('Continue to Shipping')}}</button>
+                                    <button class="primary-btn py-2" onclick="showCheckoutModal()">{{__('Continue to Shipping')}}</button>
                                 @endif
                             </div>
                         </div>

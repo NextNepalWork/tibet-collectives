@@ -44,10 +44,12 @@
                 <div class="footer-widget">
                     <h5>My Account</h5>
                     <ul>
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Contact</a></li>
+                        @auth
+                        <li><a href="{{route('dashboard')}}">My Account</a></li>
+                        @endauth
+                        <li><a href="{{route('contact')}}">Contact</a></li>
                         <li><a href="#">Shopping Cart</a></li>
-                        <li><a href="#">Shop</a></li>
+                        <li><a href="{{route('products')}}">Shop</a></li>
                     </ul>
                 </div>
             </div>

@@ -123,10 +123,10 @@
                                             <i class="icon_heart_alt"></i>
                                         </div>
                                         <ul>
-                                            <li class="w-icon active">
+                                            {{-- <li class="w-icon active">
                                                 <a href="#"><i class="icon_bag_alt"></i>
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                             <li class="quick-view">
                                                 <a class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
                                                     + Quick View 
@@ -188,10 +188,10 @@
                                             <i class="icon_heart_alt"></i>
                                         </div>
                                         <ul>
-                                            <li class="w-icon active">
+                                            {{-- <li class="w-icon active">
                                                 <a href="#"><i class="icon_bag_alt"></i>
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                             <li class="quick-view">
                                                 <a class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
                                                     + Quick View
@@ -253,10 +253,10 @@
                                             <i class="icon_heart_alt"></i>
                                         </div>
                                         <ul>
-                                            <li class="w-icon active">
+                                            {{-- <li class="w-icon active">
                                                 <a href="#"><i class="icon_bag_alt"></i>
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                             <li class="quick-view">
                                                 <a class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
                                                     + Quick View
@@ -317,7 +317,7 @@
 @if ($flash_deals != null)
 
 <section class="deal-of-week set-bg spad"
-    data-setbg="https://koto.qodeinteractive.com/wp-content/uploads/2017/02/h5-slide-1.jpg">
+    data-setbg="{{asset($flash_deals->banner)}}">
     <div class="container">
         {{-- @foreach ($flash_deals->flash_deal_products as $key => $flash_deal_product) --}}
         @php
@@ -356,7 +356,7 @@
                 </div> --}}
                 <span class="demo"></span>
             </div>
-            <a href="#" class="primary-btn">Shop Now</a>
+            <a href="{{route('flash-deal-details',$flash_deals->slug)}}" class="primary-btn">Shop Now</a>
         </div>
         
         {{-- @endif --}}
@@ -412,10 +412,10 @@
                                                 <i class="icon_heart_alt"></i>
                                             </div>
                                             <ul>
-                                                <li class="w-icon active">
+                                                {{-- <li class="w-icon active">
                                                     <a href="#"><i class="icon_bag_alt"></i>
                                                     </a>
-                                                </li>
+                                                </li> --}}
                                                 <li class="quick-view">
                                                     <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
                                                         + Quick View
