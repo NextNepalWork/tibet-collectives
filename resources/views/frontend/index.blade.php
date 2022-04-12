@@ -94,31 +94,50 @@
                 </div>
             </div>
             <div class="col-lg-8 offset-lg-1 filter-control">  
+                
                 <ul class="nav nav-tabs m-3">
-                    <li class="active"><a data-toggle="tab" href="#menu1">Latest</a></li>
+                    <li class="active"><a data-toggle="tab" href="#menu1" class="active">Latest</a></li>
                     <li><a data-toggle="tab" href="#menu2">Top</a></li>
                     <li><a data-toggle="tab" href="#menu3">Best Selling</a></li>
                 </ul>
 
                 <div class="tab-content">
-                    <div id="menu1" class="tab-pane fade in active">
+                    <div id="menu1" class="tab-pane fadein active">
                         <div class="product-slider owl-carousel">
 
                             @foreach (\App\Product::where('published','1')->latest()->get() as $product)
 
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        @if (!empty($product->thumbnail_img))
-                                            @if(file_exists($product->thumbnail_img))
-                                                <img src="{{ asset($product->thumbnail_img) }}" alt="{{ __($product->name . '-' . $product->unit_price ) }}">
+                                        <a href="{{ route('product', $product->slug) }}">
+
+                                            @if (!empty($product->thumbnail_img))
+                                                @if(file_exists($product->thumbnail_img))
+                                                    <img src="{{ asset($product->thumbnail_img) }}" alt="{{ __($product->name . '-' . $product->unit_price ) }}">
+                                                @else
+                                                    <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
+
+                                                @endif
                                             @else
                                                 <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
-
                                             @endif
+                                        </a>
+                                        @php
+                                            $qty = 0;
+                                            if($product->variant_product){
+                                                foreach ($product->stocks as $key => $stock) {
+                                                    $qty += $stock->qty;
+                                                }
+                                            }
+                                            else{
+                                                $qty = $product->current_stock ;
+                                            }
+                                        @endphp
+                                        @if($qty > 0)
+                                            <div class="sale pp-sale">Sale</div>
                                         @else
-                                            <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
+                                            <div class="sale pp-sale">Out of stock</div>
                                         @endif
-                                        <div class="sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -142,7 +161,7 @@
                                     </div>
                                     <div class="pi-text">
                                         <div class="catagory-name">{{\App\Category::where('id',$product->category_id)->first()->name}}</div>
-                                        <a href="{{route('products',$product->slug)}}">
+                                        <a href="{{ route('product', $product->slug) }}">
                                             <h5>{{$product->name}}</h5>
                                         </a>
                                         <div class="product-price">
@@ -173,17 +192,35 @@
 
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        @if (!empty($product->thumbnail_img))
-                                            @if(file_exists($product->thumbnail_img))
-                                                <img src="{{ asset($product->thumbnail_img) }}" alt="{{ __($product->name . '-' . $product->unit_price ) }}">
+                                        <a href="{{ route('product', $product->slug) }}">
+
+                                            @if (!empty($product->thumbnail_img))
+                                                @if(file_exists($product->thumbnail_img))
+                                                    <img src="{{ asset($product->thumbnail_img) }}" alt="{{ __($product->name . '-' . $product->unit_price ) }}">
+                                                @else
+                                                    <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
+
+                                                @endif
                                             @else
                                                 <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
-
                                             @endif
+                                        </a>
+                                        @php
+                                            $qty = 0;
+                                            if($product->variant_product){
+                                                foreach ($product->stocks as $key => $stock) {
+                                                    $qty += $stock->qty;
+                                                }
+                                            }
+                                            else{
+                                                $qty = $product->current_stock ;
+                                            }
+                                        @endphp
+                                        @if($qty > 0)
+                                            <div class="sale pp-sale">Sale</div>
                                         @else
-                                            <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
+                                            <div class="sale pp-sale">Out of stock</div>
                                         @endif
-                                        <div class="sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -207,7 +244,7 @@
                                     </div>
                                     <div class="pi-text">
                                         <div class="catagory-name">{{\App\Category::where('id',$product->category_id)->first()->name}}</div>
-                                        <a href="{{route('products',$product->slug)}}">
+                                        <a href="{{ route('product', $product->slug) }}">
                                             <h5>{{$product->name}}</h5>
                                         </a>
                                         <div class="product-price">
@@ -238,17 +275,35 @@
 
                                 <div class="product-item">
                                     <div class="pi-pic">
-                                        @if (!empty($product->thumbnail_img))
-                                            @if(file_exists($product->thumbnail_img))
-                                                <img src="{{ asset($product->thumbnail_img) }}" alt="{{ __($product->name . '-' . $product->unit_price ) }}">
+                                        <a href="{{ route('product', $product->slug) }}">
+
+                                            @if (!empty($product->thumbnail_img))
+                                                @if(file_exists($product->thumbnail_img))
+                                                    <img src="{{ asset($product->thumbnail_img) }}" alt="{{ __($product->name . '-' . $product->unit_price ) }}">
+                                                @else
+                                                    <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
+
+                                                @endif
                                             @else
                                                 <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
-
                                             @endif
+                                        </a>
+                                        @php
+                                            $qty = 0;
+                                            if($product->variant_product){
+                                                foreach ($product->stocks as $key => $stock) {
+                                                    $qty += $stock->qty;
+                                                }
+                                            }
+                                            else{
+                                                $qty = $product->current_stock ;
+                                            }
+                                        @endphp
+                                        @if($qty > 0)
+                                            <div class="sale pp-sale">Sale</div>
                                         @else
-                                            <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
+                                            <div class="sale pp-sale">Out of stock</div>
                                         @endif
-                                        <div class="sale">Sale</div>
                                         <div class="icon">
                                             <i class="icon_heart_alt"></i>
                                         </div>
@@ -272,7 +327,7 @@
                                     </div>
                                     <div class="pi-text">
                                         <div class="catagory-name">{{\App\Category::where('id',$product->category_id)->first()->name}}</div>
-                                        <a href="{{route('products',$product->slug)}}">
+                                        <a href="{{ route('product', $product->slug) }}">
                                             <h5>{{$product->name}}</h5>
                                         </a>
                                         <div class="product-price">
@@ -319,48 +374,24 @@
 <section class="deal-of-week set-bg spad"
     data-setbg="{{asset($flash_deals->banner)}}">
     <div class="container">
-        {{-- @foreach ($flash_deals->flash_deal_products as $key => $flash_deal_product) --}}
         @php
             // $product = \App\Product::find($flash_deal_product->product_id);
             $enddate = $flash_deals->end_date;
             $time = date('m/d/Y', $enddate);
         @endphp
 
-        {{-- @if ($product != null && $product->published != 0) --}}
         <div class="col-lg-6 text-center">
             <div class="section-title">
                 <h2>Flash Deal</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed<br> do ipsum dolor sit amet,
-                    consectetur adipisicing elit </p>
-                <div class="product-price">
+                <p>{{$flash_deals->title}}</p>
+                {{-- <div class="product-price">
                     $35.00
                     <span>/ Handcraft</span>
-                </div>
-            </div>
-            <div class="countdown-timer" id="countdown">
-                {{-- <div class="cd-item">
-                    <span>56</span>
-                    <p>Days</p>
-                </div>
-                <div class="cd-item">
-                    <span>12</span>
-                    <p>Hrs</p>
-                </div>
-                <div class="cd-item">
-                    <span>40</span>
-                    <p>Mins</p>
-                </div>
-                <div class="cd-item">
-                    <span>52</span>
-                    <p>Secs</p>
                 </div> --}}
-                <span class="demo"></span>
             </div>
+            <div class="countdown-timer countdown countdown-sm countdown--style-1" data-countdown-date="{{ date('m/d/Y', $flash_deals->end_date) }}" data-countdown-label="show"></div>
             <a href="{{route('flash-deal-details',$flash_deals->slug)}}" class="primary-btn">Shop Now</a>
         </div>
-        
-        {{-- @endif --}}
-{{-- @endforeach --}}
     </div>
 </section>
 
@@ -372,95 +403,97 @@
         <div class="row">
             <div class="col-lg-8 filter-control">
                 <div class="tabpanel">
-
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs m-3" role="tablist">
-                
                         @foreach(\App\Category::where('top', 1)->latest()->limit(3)->get() as $count => $category)
-                
                             <li role="presentation" @if($count == 0) class="active" @endif>
-                                <a href="#tab-{{ $category->id }}" aria-controls="#tab-{{ $category->id }}" role="tab" data-toggle="tab">{{ $category->name }}</a>
+                                <a href="#tab-{{ $category->id }}" aria-controls="#tab-{{ $category->id }}" role="tab" data-toggle="tab" @if($count == 0) class="active" @endif>{{ $category->name }}</a>
                             </li>
-                
                         @endforeach 
-                    
                     </ul>
-                
                     <!-- Tab panes -->
                     <div class="tab-content">
-                
                         @foreach(\App\Category::where('top', 1)->latest()->limit(3)->get() as $key => $category)
                             <div role="tabpanel" @if($key == 0) class="tab-pane active" @else class="tab-pane" @endif id="tab-{{ $category->id }}">
                                 <div class="product-slider owl-carousel">
 
-                                @foreach ($category->products as $product)
+                                    @foreach ($category->products as $product)
 
-                                    <div class="product-item">
-                                        <div class="pi-pic">
-                                            @if (!empty($product->thumbnail_img))
-                                                @if(file_exists($product->thumbnail_img))
-                                                    <img src="{{ asset($product->thumbnail_img) }}" alt="{{ __($product->name . '-' . $product->unit_price ) }}">
+                                        <div class="product-item">
+                                            <div class="pi-pic">
+                                                <a href="{{ route('product', $product->slug) }}">
+
+                                                    @if (!empty($product->thumbnail_img))
+                                                        @if(file_exists($product->thumbnail_img))
+                                                            <img src="{{ asset($product->thumbnail_img) }}" alt="{{ __($product->name . '-' . $product->unit_price ) }}">
+                                                        @else
+                                                            <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
+
+                                                        @endif
+                                                    @else
+                                                        <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
+                                                    @endif
+                                                </a>
+                                                @php
+                                                    $qty = 0;
+                                                    if($product->variant_product){
+                                                        foreach ($product->stocks as $key => $stock) {
+                                                            $qty += $stock->qty;
+                                                        }
+                                                    }
+                                                    else{
+                                                        $qty = $product->current_stock ;
+                                                    }
+                                                @endphp
+                                                @if($qty > 0)
+                                                    <div class="sale pp-sale">Sale</div>
                                                 @else
-                                                    <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
-
+                                                    <div class="sale pp-sale">Out of stock</div>
                                                 @endif
-                                            @else
-                                                <img src="{{ asset('frontend/images/placeholder.jpg') }}" alt="{{ __($product->name) }}">
-                                            @endif
-                                            <div class="sale">Sale</div>
-                                            <div class="icon">
-                                                <i class="icon_heart_alt"></i>
+                                                <div class="icon">
+                                                    <i class="icon_heart_alt"></i>
+                                                </div>
+                                                <ul>
+                                                    <li class="quick-view">
+                                                        <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
+                                                            + Quick View
+                                                        </button>
+                                                        
+                                                    </li>
+                                                    <li class="w-icon">
+                                                        <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})" tabindex="0">
+                                                            <i class="fa fa-heart"></i>
+                                                        </button>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                            <ul>
-                                                {{-- <li class="w-icon active">
-                                                    <a href="#"><i class="icon_bag_alt"></i>
-                                                    </a>
-                                                </li> --}}
-                                                <li class="quick-view">
-                                                    <button class="btn quick-view" title="Quick view" onclick="showAddToCartModal({{ $product->id }})" tabindex="0">
-                                                        + Quick View
-                                                    </button>
-                                                    {{-- <a href="product-single.html">+ Quick View</a> --}}
-                                                </li>
-                                                <li class="w-icon">
-                                                    <button class="btn add-wishlist" title="Add to Wishlist" onclick="addToWishList({{ $product->id }})" tabindex="0">
-                                                        <i class="fa fa-heart"></i>
-                                                    </button>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="pi-text">
-                                            <div class="catagory-name">{{$category->name}}</div>
-                                            <a href="{{route('products',$product->slug)}}">
-                                                <h5>{{$product->name}}</h5>
-                                            </a>
-                                            <div class="product-price">
-                                                {{-- <span class="red_text"> --}}
-                                                    {{ home_discounted_base_price($product->id) }}
-                                                
-                                                @if(home_base_price($product->id) != home_discounted_base_price($product->id))
-                                                    <small>
-                                                        <strike>
-                                                            {{ home_base_price($product->id) }}
-                                                        </strike>
-                                                    </small> 
-                                                @endif
+                                            <div class="pi-text">
+                                                <div class="catagory-name">{{$category->name}}</div>
+                                                <a href="{{ route('product', $product->slug) }}">
+                                                    <h5>{{$product->name}}</h5>
+                                                </a>
+                                                <div class="product-price">
+                                                        {{ home_discounted_base_price($product->id) }}
+                                                    
+                                                    @if(home_base_price($product->id) != home_discounted_base_price($product->id))
+                                                        <small>
+                                                            <strike>
+                                                                {{ home_base_price($product->id) }}
+                                                            </strike>
+                                                        </small> 
+                                                    @endif
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                
-                                
+                    
                                     
-                                @endforeach
+                                        
+                                    @endforeach
                 
+                                </div>
                             </div>
-                
-                            </div>
-                
                         @endforeach 
-                        
                     </div>
-                
                 </div>
             </div>
             <div class="col-lg-3 offset-lg-1">

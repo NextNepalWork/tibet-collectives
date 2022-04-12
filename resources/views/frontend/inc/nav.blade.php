@@ -99,7 +99,7 @@
                                 {{-- <span>1</span> --}}
                             </a>
                         </li>
-                        <li class="cart-icon">
+                        <li class="cart-icon" id="cart_items">
                             <a href="{{route('cart')}}">                                 <i class="icon_bag_alt"></i>
                                 @if(Session::has('cart'))
                                 <span class="nav-box-number">{{ count(Session::get('cart'))}}</span>

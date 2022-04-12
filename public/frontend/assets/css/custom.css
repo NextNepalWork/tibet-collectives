@@ -4759,7 +4759,7 @@ ol {
     bottom: -3px;
     width: 100%;
     height: 2px;
-    background: #171717;
+    /* background: #171717; */
     content: "";
     opacity: 0;
 }
@@ -8757,4 +8757,8 @@ a {
 
 .filter-control ul li .active {
     color: #000 !important;
+}
+
+.inactive {
+    color: darkgray !important;
 }

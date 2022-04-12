@@ -228,7 +228,7 @@
                         <!-- Add to cart button -->
                         @if ($product->digital == 1)
                             <button type="button"
-                                    class="btn btn-main mb-3 py-2 px-3 add-to-cart"
+                                    class="primary-btn my-2 add-to-cart"
                                     onclick="addToCart()">
                                 <i class="la la-shopping-cart"></i>
                                 <span class="d-none d-md-inline-block"> {{__('Add to cart')}}</span>
@@ -236,16 +236,16 @@
                         @else
                             @if($qty > 0)
                                 <button type="button"
-                                        class="btn btn-main mb-3 py-2 px-3 add-to-cart"
+                                        class="primary-btn my-2 add-to-cart"
                                         onclick="addToCart()">
                                     <i class="la la-shopping-cart"></i>
                                     <span class="d-none d-md-inline-block"> {{__('Add to cart')}}</span>
                                 </button>
-                                <button type="button" class="btn btn-main mb-3 py-2 px-3" onclick="buyNow()">
+                                <button type="button" class="primary-btn my-2" onclick="buyNow()">
                                     <i class="la la-shopping-cart"></i> Buy Now
                                 </button>
                             @else
-                                <button type="button" class="btn btn-main mb-3 py-2 px-3" disabled>
+                                <button type="button" class="primary-btn my-2" disabled>
                                     <i class="la la-cart-arrow-down"></i> {{__('Out of Stock')}}
                                 </button>
                             @endif
