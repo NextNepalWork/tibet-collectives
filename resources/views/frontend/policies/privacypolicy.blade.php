@@ -1,14 +1,14 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-<div class="breadcrumb-area">
+<div class="breacrumb-section">
     <div class="container">
         <div class="row">
-            <div class="col">
-                <ul class="breadcrumb">
-                    <li><a href="{{ route('home') }}">{{__('Home')}}</a></li>
-                    <li><a href="{{ route('privacypolicy') }}">{{__('Privacy Policy')}}</a></li>
-                </ul>
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <a href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
+                    <span>Privacy Policy</span>
+                </div>
             </div>
         </div>
     </div>

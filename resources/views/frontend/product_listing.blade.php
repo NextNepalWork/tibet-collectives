@@ -46,30 +46,26 @@ $meta_description = \App\SeoSetting::first()->description;
 
 @section('content')
 
+
 <div class="breacrumb-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb bg-transparent">
-                            
-                            <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="fa fa-home"></i> {{__('Home')}}</a></li>
-                            <li class="breadcrumb-item"><a href="{{ route('products') }}">{{__('All Categories')}}</a></li>
-                            @if(isset($category_id))
-                                <li class="breadcrumb-item active"><a href="{{ route('products.category', \App\Category::find($category_id)->slug) }}">{{ \App\Category::find($category_id)->name }}</a></li>
-                            @endif
-                            @if(isset($subcategory_id))
-                                <li class="breadcrumb-item"><a href="{{ route('products.category', \App\SubCategory::find($subcategory_id)->category->slug) }}">{{ \App\SubCategory::find($subcategory_id)->category->name }}</a></li>
-                                <li class="breadcrumb-item active"><a href="{{ route('products.subcategory', \App\SubCategory::find($subcategory_id)->slug) }}">{{ \App\SubCategory::find($subcategory_id)->name }}</a></li>
-                            @endif
-                            @if(isset($subsubcategory_id))
-                                <li class="breadcrumb-item"><a href="{{ route('products.category', \App\SubSubCategory::find($subsubcategory_id)->subcategory->category->slug) }}">{{ \App\SubSubCategory::find($subsubcategory_id)->subcategory->category->name }}</a></li>
-                                <li class="breadcrumb-item"><a href="{{ route('products.subcategory', \App\SubsubCategory::find($subsubcategory_id)->subcategory->slug) }}">{{ \App\SubsubCategory::find($subsubcategory_id)->subcategory->name }}</a></li>
-                                <li class="breadcrumb-item active"><a href="{{ route('products.subsubcategory', \App\SubSubCategory::find($subsubcategory_id)->slug) }}">{{ \App\SubSubCategory::find($subsubcategory_id)->name }}</a></li>
-                            @endif
-                        </ol>
-                    </nav>
+                    <a href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
+                    <a href="{{ route('products') }}">{{__('All Categories')}}</a>
+                    @if(isset($category_id))
+                        <a href="{{ route('products.category', \App\Category::find($category_id)->slug) }}">{{ \App\Category::find($category_id)->name }}</a>
+                    @endif
+                    @if(isset($subcategory_id))
+                        <a href="{{ route('products.category', \App\SubCategory::find($subcategory_id)->category->slug) }}">{{ \App\SubCategory::find($subcategory_id)->category->name }}</a>
+                        <a href="{{ route('products.subcategory', \App\SubCategory::find($subcategory_id)->slug) }}">{{ \App\SubCategory::find($subcategory_id)->name }}</a>
+                    @endif
+                    @if(isset($subsubcategory_id))
+                        <a href="{{ route('products.category', \App\SubSubCategory::find($subsubcategory_id)->subcategory->category->slug) }}">{{ \App\SubSubCategory::find($subsubcategory_id)->subcategory->category->name }}</a>
+                        <a href="{{ route('products.subcategory', \App\SubsubCategory::find($subsubcategory_id)->subcategory->slug) }}">{{ \App\SubsubCategory::find($subsubcategory_id)->subcategory->name }}</a>
+                        <a href="{{ route('products.subsubcategory', \App\SubSubCategory::find($subsubcategory_id)->slug) }}">{{ \App\SubSubCategory::find($subsubcategory_id)->name }}</a>
+                    @endif
                 </div>
             </div>
         </div>

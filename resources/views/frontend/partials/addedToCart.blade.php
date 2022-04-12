@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="d-flex justify-content-between">
-        <button class="btn btn-main mb-3 py-2 px-3" data-dismiss="modal">{{__('Back to shopping')}}</button>
-        <a href="{{ route('cart') }}" class="btn btn-main mb-3 py-2 px-3">{{__('Proceed to Checkout')}}</a>
+        <button class="primary-btn my-2" data-dismiss="modal">{{__('Back to shopping')}}</button>
+        <a href="{{ route('cart') }}" class="primary-btn my-2">{{__('Proceed to Checkout')}}</a>
     </div>
 </div>

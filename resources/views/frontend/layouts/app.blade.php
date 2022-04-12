@@ -82,7 +82,7 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"> --}}
 
 <link type="text/css" href="{{ asset('frontend/css/main.css') }}" rel="stylesheet" media="all">
 
@@ -296,6 +296,10 @@ h6.active-item {
 
 <!-- SCRIPTS -->
 <!-- <a href="#" class="back-to-top btn-back-to-top"></a> -->
+<script src="{{asset('frontend/assets/js/jquery-3.3.1.min.js')}}"></script>
+<script src="{{asset('frontend/assets/js/jquery-ui.min.js')}}"></script>
+
+
 
 <!-- Core -->
 <script src="{{ asset('frontend/js/vendor/popper.min.js') }}"></script>
@@ -342,10 +346,7 @@ h6.active-item {
 	<script src="https://use.fontawesome.com/f90dcc1da9.js"></script>
 	<!-- Main Js File -->
 	<script src="{{asset('frontend/assets/js/script.js')}}"></script> --}}
-    <script src="{{asset('frontend/assets/js/main.js')}}"></script>
-    <script src="{{asset('frontend/assets/js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('frontend/assets/js/jquery-ui.min.js')}}"></script>
     <script
         src="{{asset('frontend/assets/js/jquery.countdown.min.js%20jquery.nice-select.min.js%20jquery.zoom.min.js%20jquery.dd.min.js%20jquery.slicknav.js.pagespeed.jc.pQbQnv7jXZ.js')}}">
     </script>
@@ -365,10 +366,13 @@ h6.active-item {
         eval(mod_pagespeed_gwflC3jfEs);
     </script>
     <script src="{{asset('frontend/assets/js/owl.carousel.min.js')}}"></script>
-    
-
     <script src="https://k1ngzed.com/dist/swiper/swiper.min.js"></script>
     <script src="https://k1ngzed.com/dist/EasyZoom/easyzoom.js"></script>
+    <script src="{{asset('frontend/assets/js/main.js')}}"></script>
+
+    
+
+
 
 {{-- <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script> --}}
 

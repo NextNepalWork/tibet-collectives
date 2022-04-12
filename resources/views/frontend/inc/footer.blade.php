@@ -25,18 +25,18 @@
                         <a href="{{ $generalsetting->facebook }}"><i class="fa fa-facebook"></i></a>
                         <a href="{{ $generalsetting->instagram }}"><i class="fa fa-instagram"></i></a>
                         <a href="{{ $generalsetting->twitter }}"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="{{ $generalsetting->youtube }}"><i class="fa fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-6 col-12 offset-lg-1">
                 <div class="footer-widget">
-                    <h5>Information</h5>
+                    <h5>Useful Links</h5>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Checkout</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Serivius</a></li>
+                        <li><a href="{{route('privacypolicy')}}">Privacy Policy</a></li>
+                        <li><a href="{{route('terms')}}">Terms and Conditions</a></li>
+                        <li><a href="{{route('sellerpolicy')}}">Seller Policy</a></li>
+                        <li><a href="{{route('supportpolicy')}}">Support</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,10 +44,12 @@
                 <div class="footer-widget">
                     <h5>My Account</h5>
                     <ul>
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Contact</a></li>
+                        @auth
+                        <li><a href="{{route('dashboard')}}">My Account</a></li>
+                        @endauth
+                        <li><a href="{{route('contact')}}">Contact</a></li>
                         <li><a href="#">Shopping Cart</a></li>
-                        <li><a href="#">Shop</a></li>
+                        <li><a href="{{route('products')}}">Shop</a></li>
                     </ul>
                 </div>
             </div>
@@ -59,7 +61,7 @@
                         @csrf
                             <input type="email" class="form-control mb-3" placeholder="{{__('Your Email Address')}}" name="email" required id="name">
                         
-                            <button type="submit" class="btn btn-main mb-3 p-2" tabindex="0">
+                            <button type="submit" class="primary-btn" tabindex="0">
                                 {{__('Send Us')}}
                             </button>
                     </form>
