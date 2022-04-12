@@ -97,9 +97,9 @@
                                     <li class="{{ areActiveRoutes(['categories.index', 'categories.create', 'categories.edit'])}}">
                                         <a class="nav-link" href="{{route('categories.index')}}">{{__('Category')}}</a>
                                     </li>
-                                    <li class="{{ areActiveRoutes(['subcategories.index', 'subcategories.create', 'subcategories.edit'])}}">
+                                    {{-- <li class="{{ areActiveRoutes(['subcategories.index', 'subcategories.create', 'subcategories.edit'])}}">
                                         <a class="nav-link" href="{{route('subcategories.index')}}">{{__('Subcategory')}}</a>
-                                    </li>
+                                    </li> --}}
                                     <li class="{{ areActiveRoutes(['products.admin', 'products.create', 'products.admin.edit'])}}">
                                         <a class="nav-link" href="{{route('products.admin')}}">{{__('Products')}}</a>
                                     </li>

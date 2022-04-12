@@ -124,6 +124,10 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 		Route::post('/home_banners/update_status', 'BannerController@update_status')->name('home_banners.update_status');
 	    Route::get('/home_banners/destroy/{id}', 'BannerController@destroy')->name('home_banners.destroy');
 
+		Route::get('/pop-edit', 'BannerController@popEdit')->name('pop-edit');
+		Route::post('/pop-update', 'BannerController@popupdate')->name('pop-update');
+		Route::post('/pop_update_status', 'BannerController@pop_update_status')->name('pop_update_status');
+
 		Route::resource('home_categories','HomeCategoryController');
 	    Route::get('/home_categories/destroy/{id}', 'HomeCategoryController@destroy')->name('home_categories.destroy');
 		Route::post('/home_categories/update_status', 'HomeCategoryController@update_status')->name('home_categories.update_status');

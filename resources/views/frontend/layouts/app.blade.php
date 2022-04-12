@@ -248,7 +248,9 @@ h6.active-item {
     padding: 0;
     /* transform: translate(29%, 77%); */
 }
-
+#txtSearchValue{
+    display: none;
+}
 </style>
 
 </head>
