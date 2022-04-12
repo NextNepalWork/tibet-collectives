@@ -246,7 +246,7 @@
                                     <a href="{{ route('password.request') }}" class="link link-xs link--style-3">{{__('Forgot password?')}}</a>
                                 </div>
                                 <div class="col-md-6 text-right">
-                                    <button type="submit" class="btn btn-main mb-3 py-2 px-3 px-4">{{__('Sign in')}}</button>
+                                    <button type="submit" class="primary-btn py-2">{{__('Sign in')}}</button>
                                 </div>
                             </div>
                         </form>
@@ -284,7 +284,7 @@
                             <span>or</span>
                         </div>
                         <div class="text-center">
-                            <a href="{{ route('checkout.shipping_info') }}" class="btn btn-main mb-3 py-2 px-3">{{__('Guest Checkout')}}</a>
+                            <a href="{{ route('checkout.shipping_info') }}" class="primary-btn py-2">{{__('Guest Checkout')}}</a>
                         </div>
                     @endif
                 </div>

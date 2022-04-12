@@ -10,15 +10,15 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5">
-                            <span>Handknit, Craft</span>
+                            {{-- <span>Handknit, Craft</span> --}}
                             <h1>Tibet Craft</h1>
-                            <p>{{$slider->slider_text}}</p>
+                            <h6>{{$slider->slider_text}}</h6>
                             <a href="{{$slider->link}}" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
-                    <div class="off-card">
+                    {{-- <div class="off-card">
                         <h2>Sale <span>50%</span></h2>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         @endforeach

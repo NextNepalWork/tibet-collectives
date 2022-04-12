@@ -29,7 +29,7 @@
             </div>
             <div class="ht-right">
                 
-                <div class="lan-selector">
+                <div class="lan-selector pl-3">
                     <a href="{{ route('orders.track') }}">{{__('Track Order')}}</a>
                 </div>
                 <div class="top-social">

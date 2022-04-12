@@ -4830,6 +4830,8 @@ ol {
 
 .product-item .pi-pic img {
     min-width: 100%;
+    min-height: 250px;
+    max-height: 250px;
 }
 
 .product-item .pi-pic .sale {
@@ -8761,4 +8763,9 @@ a {
 
 .inactive {
     color: darkgray !important;
+}
+
+.btn-styled {
+    background-color: cornflowerblue !important;
+    color: whitesmoke;
 }

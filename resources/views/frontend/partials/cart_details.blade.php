@@ -31,8 +31,16 @@
                                     @endphp
                                     <tr class="cart-item">
                                         <td class="product-image">
-                                            <a href="#" class="mr-3">
-                                                <img loading="lazy"  src="{{ asset($product->thumbnail_img) }}">
+                                            <a href="{{route('product',$product->slug)}}" class="mr-3">
+                                                @if (!empty($product->thumbnail_img))
+                                                    @if(file_exists($product->thumbnail))
+                                                        <img class="" src="{{asset($product->thumbnail_img)}}" alt="{{$product->name}}">
+                                                    @else
+                                                        <img class="" src="{{asset('frontend/images/placeholder.jpg')}}" alt="{{$product->name}}">
+                                                    @endif
+                                                @else
+                                                    <img class="" src="{{asset('frontend/images/placeholder.jpg')}}" alt="{{$product->name}}">
+                                                @endif
                                             </a>
                                         </td>
 
@@ -77,15 +85,15 @@
                 <div class="row align-items-center pt-4">
                     <div class="col-6">
                         <a href="{{ route('home') }}" class="link link--style-3">
-                            <i class="la la-mail-reply"></i>
+                            <i class="fa fa-reply-all"></i>
                             {{__('Return to shop')}}
                         </a>
                     </div>
                     <div class="col-6 text-right">
                         @if(Auth::check())
-                            <a href="{{ route('checkout.shipping_info') }}" class="btn btn-main mb-3 py-2 px-3">{{__('Continue to Shipping')}}</a>
+                            <a href="{{ route('checkout.shipping_info') }}" class="primary-btn py-2">{{__('Continue to Shipping')}}</a>
                         @else
-                            <button class="btn btn-main mb-3 py-2 px-3" onclick="showCheckoutModal()">{{__('Continue to Shipping')}}</button>
+                            <button class="primary-btn py-2" onclick="showCheckoutModal()">{{__('Continue to Shipping')}}</button>
                         @endif
                     </div>
                 </div>
