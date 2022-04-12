@@ -20,6 +20,7 @@
                 <div class="register-form">
                     <h2>Register</h2>
                     <form role="form" action="{{ route('register') }}" method="POST">
+                        @csrf
                         <div class="group-input">
                             <label for="username">Email address *</label>
                             <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}" placeholder="{{ __('Enter Email Address') }}" name="email">

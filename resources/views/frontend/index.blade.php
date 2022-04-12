@@ -9,16 +9,16 @@
                 data-setbg="{{ asset($slider->photo) }}">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-5">
-                            <span>Handknit, Craft</span>
+                        <div class="col-lg-5 p-4" style="background-color: #f5c7c74f;">
+                            {{-- <span>Handknit, Craft</span> --}}
                             <h1>Tibet Craft</h1>
-                            <p>{{$slider->slider_text}}</p>
+                            <h5 class="mb-2">{{$slider->slider_text}}</h5>
                             <a href="{{$slider->link}}" class="primary-btn">Shop Now</a>
                         </div>
                     </div>
-                    <div class="off-card">
+                    {{-- <div class="off-card">
                         <h2>Sale <span>50%</span></h2>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         @endforeach
@@ -89,8 +89,8 @@
                 @endphp
                 <div class="product-large set-bg"
                     data-setbg="{{!empty($banner[0]->photo) ? file_exists($banner[0]->photo) ? $banner[0]->photo : asset('frontend/images/placeholder.jpg') : asset('frontend/images/placeholder.jpg')}}">
-                    <h2>Carft's</h2>
-                    <a href="{{route('products')}}">Discover More</a>
+                    {{-- <h2>Carft's</h2> --}}
+                    <a href="{{route('products')}}" class="primary-btn py-2" style="border:none">Discover More</a>
                 </div>
             </div>
             <div class="col-lg-8 offset-lg-1 filter-control">  
@@ -383,7 +383,7 @@
         <div class="col-lg-6 text-center">
             <div class="section-title">
                 <h2>Flash Deal</h2>
-                <p>{{$flash_deals->title}}</p>
+                <h5>{{$flash_deals->title}}</h5>
                 {{-- <div class="product-price">
                     $35.00
                     <span>/ Handcraft</span>
@@ -499,8 +499,8 @@
             <div class="col-lg-3 offset-lg-1">
                 <div class="product-large set-bg m-large"
                     data-setbg="{{!empty($banner[1]->photo) ? file_exists($banner[1]->photo) ? $banner[1]->photo : asset('frontend/images/placeholder.jpg') : asset('frontend/images/placeholder.jpg')}}">
-                    <h2>Handcraft</h2>
-                    <a href="{{route('products')}}">Discover More</a>
+                    {{-- <h2>Handcraft</h2> --}}
+                    <a href="{{route('products')}}" class="primary-btn py-2" style="border:none">Discover More</a>
                 </div>
             </div>
         </div>

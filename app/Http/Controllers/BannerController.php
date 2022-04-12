@@ -70,6 +70,39 @@ class BannerController extends Controller
         return view('banners.edit', compact('banner'));
     }
 
+    public function popEdit()
+    {
+        $generalsetting = \App\GeneralSetting::first();
+        return view('banners.popedit', compact($generalsetting));
+    }
+    public function popupdate(Request $request)
+    {
+        $generalsetting = \App\GeneralSetting::first();
+        
+
+        // $banner = Banner::find($id);pop_status
+        $generalsetting->pop_img = $request->previous_photo;
+
+        if($request->hasFile('photo')){
+            $generalsetting->pop_img = $request->photo->store('uploads/banners');
+        }
+        $generalsetting->save();
+        flash(__('Video Banner has been updated successfully'))->success();
+        return redirect()->route('home_settings.index');
+    }
+    public function pop_update_status(Request $request)
+    {
+        $generalsetting = \App\GeneralSetting::first();
+        // $banner = Banner::find($request->id);
+        $generalsetting->pop_status = $request->status;
+        if($generalsetting->save()){
+            return '1';
+        }
+        else {
+            return '0';
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *

@@ -33,14 +33,14 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group" id="subcategory">
+                    {{-- <div class="form-group" id="subcategory">
                         <label class="col-lg-2 control-label">{{__('Subcategory')}}</label>
                         <div class="col-lg-7">
                             <select class="form-control demo-select2-placeholder" name="subcategory_id" id="subcategory_id" required>
 
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                     {{-- <div class="form-group" id="subsubcategory">
                         <label class="col-lg-2 control-label">{{__('Sub Subcategory')}}</label>
                         <div class="col-lg-7">

@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
-
 use App\User;
 use App\Customer;
 use App\BusinessSetting;
@@ -16,7 +14,6 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Cookie;
 use Nexmo;
 use Twilio\Rest\Client;
-
 class RegisterController extends Controller
 {
     /*
@@ -29,16 +26,13 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
-
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
     protected $redirectTo = '/';
-
     /**
      * Create a new controller instance.
      *
@@ -48,7 +42,6 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
     }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -62,7 +55,6 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -77,11 +69,9 @@ class RegisterController extends Controller
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
             ]);
-
             $customer = new Customer;
             $customer->user_id = $user->id;
             $customer->save();
-
             if(BusinessSetting::where('type', 'email_verification')->first()->value != 1){
                 $user->email_verified_at = date('Y-m-d H:m:s');
                 $user->save();
@@ -100,18 +90,15 @@ class RegisterController extends Controller
                     'password' => Hash::make($data['password']),
                     'verification_code' => rand(100000, 999999)
                 ]);
-
                 $customer = new Customer;
                 $customer->user_id = $user->id;
                 $customer->save();
-                
                 if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated){
                     $otpController = new OTPVerificationController;
                     $otpController->send_code($user);
                 }
             }
         }
-
         if(Cookie::has('referral_code')){
             $referral_code = Cookie::get('referral_code');
             $referred_by_user = User::where('referral_code', $referral_code)->first();
@@ -120,10 +107,8 @@ class RegisterController extends Controller
                 $user->save();
             }
         }
-
         return $user;
     }
-
     public function register(Request $request)
     {
         if (filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
@@ -136,17 +121,12 @@ class RegisterController extends Controller
             flash('Phone already exists.');
             return back();
         }
-
         $this->validator($request->all())->validate();
-
         event(new Registered($user = $this->create($request->all())));
-
         $this->guard()->login($user);
-
         return $this->registered($request, $user)
             ?: redirect($this->redirectPath());
     }
-
     protected function registered(Request $request, $user)
     {
         if ($user->email == null) {

@@ -2,12 +2,14 @@
     $generalsetting = \App\GeneralSetting::first();
 @endphp
 <header class="header-section">
+    @if ($generalsetting->pop_status == 1 && $generalsetting->pop_img != null)
     @if(Route::is('home'))
     <div class="video-wrapper">
         <video loop autoplay muted style="width: 100%;">
-            <source src="{{asset('frontend/assets/video/banner.mp4')}}" type="video/mp4">
+            <source src="{{asset($generalsetting->pop_img)}}" type="video/mp4">
         </video>
     </div>
+    @endif
     @endif
     <div class="header-top">
         <div class="container">
@@ -29,7 +31,7 @@
             </div>
             <div class="ht-right">
                 
-                <div class="lan-selector">
+                <div class="lan-selector pl-3">
                     <a href="{{ route('orders.track') }}">{{__('Track Order')}}</a>
                 </div>
                 <div class="top-social">

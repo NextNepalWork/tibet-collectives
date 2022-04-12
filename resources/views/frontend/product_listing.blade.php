@@ -318,12 +318,12 @@ $meta_description = \App\SeoSetting::first()->description;
                                         <a href="{{ route('product', $product->slug) }}">
                                             @if (!empty($product->thumbnail_img))
                                                 @if(file_exists($product->thumbnail_img))
-                                                    <img src="{{asset($product->thumbnail_img)}}" alt="{{$product->name}}">
+                                                    <img src="{{asset($product->thumbnail_img)}}" alt="{{$product->name}}" height="250px">
                                                     @else
-                                                        <img src="{{asset('frontend/images/placeholder.jpg')}}" alt="{{$product->name}}">
+                                                        <img src="{{asset('frontend/images/placeholder.jpg')}}" alt="{{$product->name}}" height="250px">
                                                     @endif
                                             @else
-                                                <img src="{{asset('frontend/images/placeholder.jpg')}}" alt="{{$product->name}}">  
+                                                <img src="{{asset('frontend/images/placeholder.jpg')}}" alt="{{$product->name}}" height="250px">  
                                             @endif
                                         </a>
 

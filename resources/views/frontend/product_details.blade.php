@@ -221,6 +221,26 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row p-2">
+                    <span class="font-weight-bold mr-2">Shipping Cost:</span>
+                        @php   
+                        $shipping_type = \App\BusinessSetting::where('type', 'shipping_type')->first()->value;
+                        if($shipping_type == 'product_wise_shipping'){
+                            $shipping = $detailedProduct->shipping_cost;
+                        }elseif($shipping_type == 'flat_rate'){
+                            $shipping = \App\BusinessSetting::where('type', 'flat_rate_shipping_cost')->first()->value;
+                        }
+                        @endphp
+                        @if ($detailedProduct->shipping_type=='free')
+                            <span class="cost pl-2">Free</span> 
+                        @else
+                            @if ($shipping <= 0)
+                                <span class="cost pl-2">Free</span> 
+                            @else
+                                <span class="cost pl-2"> Rs. {{$detailedProduct->shipping_cost}} </span>
+                            @endif
+                        @endif
+                    </div>
 
                 </form>
 
@@ -229,7 +249,9 @@
                             <button type="button" class="primary-btn" onclick="addToCart()">
                                     {{__('Add to cart')}}
                             </button>
-                            <a href="" class="primary-btn my-md-0 my-2">Buy Now</a>
+                            <button type="button" class="primary-btn" onclick="buyNow()">
+                                {{__('Buy Now')}}
+                            </button>
 
                         @else
                             <a type="button" class="primary-btn" disabled>

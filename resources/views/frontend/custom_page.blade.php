@@ -52,7 +52,7 @@
 
 <section class="about section">
     <div class="container">
-      <div class="row">
+      <div class="row p-4">
         {{-- <div class="col-lg-4 col-sm-6  col-md-6">
           <div class="about-info mb-5 mb-lg-0">
             <img class="img-fluid" src="images/about/about-1.jpg" alt="about-img">
