@@ -4087,7 +4087,7 @@ ol {
 }
 
 .inner-header .advanced-search .input-group {
-    max-width: 70%;
+    /* max-width: 70%; */
     height: 100%;
 }
 
@@ -4832,6 +4832,7 @@ ol {
     min-width: 100%;
     min-height: 250px;
     max-height: 250px;
+    object-fit: contain;
 }
 
 .product-item .pi-pic .sale {
@@ -8758,7 +8759,8 @@ a {
 }
 
 .filter-control ul li .active {
-    color: #000 !important;
+    color: #000;
+    /* !important */
 }
 
 .inactive {

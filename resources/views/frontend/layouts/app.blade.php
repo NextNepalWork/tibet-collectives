@@ -251,6 +251,13 @@ h6.active-item {
 #txtSearchValue{
     display: none;
 }
+.nav-tabs li a {
+    padding: 5px;
+}
+.nav-tabs li a.active {
+    background: #1b2743;
+    color: white!important;
+}
 </style>
 
 </head>

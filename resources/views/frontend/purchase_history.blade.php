@@ -149,7 +149,7 @@
 @section('script')
     <script type="text/javascript">
         $('#order_details').on('hidden.bs.modal', function () {
-            location.reload();
+            // location.reload();
         })
     </script>
 
