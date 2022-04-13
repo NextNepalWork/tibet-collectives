@@ -1,6 +1,16 @@
 @extends('frontend.layouts.app')
 
 @section('content')
+<style>
+    .countdown-item {
+        background: #1b2743;
+        color: #ffff;
+    }
+    .countdown-digit{
+        background: #ffb648!important;
+        display: inline-block;
+    }
+</style>
 <section class="hero-section">
     <div class="hero-items owl-carousel">
         @foreach (\App\Slider::where('published', 1)->get() as $key => $slider)
@@ -96,7 +106,7 @@
             <div class="col-lg-8 offset-lg-1 filter-control">  
                 
                 <ul class="nav nav-tabs m-3">
-                    <li class="active"><a data-toggle="tab" href="#menu1" class="active">Latest</a></li>
+                    <li><a data-toggle="tab" href="#menu1" class="active">Latest</a></li>
                     <li><a data-toggle="tab" href="#menu2">Top</a></li>
                     <li><a data-toggle="tab" href="#menu3">Best Selling</a></li>
                 </ul>

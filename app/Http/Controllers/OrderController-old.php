@@ -347,13 +347,13 @@ class OrderControllerOld extends Controller
                		 catch (\Exception $e) {
                 }
             }
-            if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated && \App\OtpConfiguration::where('type', 'otp_for_order')->first()->value){
-                try {
-                    $otpController = new OTPVerificationController;
-                    $otpController->send_order_code($order);
-                } catch (\Exception $e) {
-                }
-            }
+            // if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated && \App\OtpConfiguration::where('type', 'otp_for_order')->first()->value){
+            //     try {
+            //         $otpController = new OTPVerificationController;
+            //         $otpController->send_order_code($order);
+            //     } catch (\Exception $e) {
+            //     }
+            // }
             //sends email to customer with the invoice pdf attached
             if(\Config::get('mail.username') != null){
                 try {
@@ -464,13 +464,13 @@ class OrderControllerOld extends Controller
             }
         }
 
-        if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated && \App\OtpConfiguration::where('type', 'otp_for_delivery_status')->first()->value){
-            try {
-                $otpController = new OTPVerificationController;
-                $otpController->send_delivery_status($order);
-            } catch (\Exception $e) {
-            }
-        }
+        // if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated && \App\OtpConfiguration::where('type', 'otp_for_delivery_status')->first()->value){
+        //     try {
+        //         $otpController = new OTPVerificationController;
+        //         $otpController->send_delivery_status($order);
+        //     } catch (\Exception $e) {
+        //     }
+        // }
 
         return 1;
     }
@@ -560,27 +560,27 @@ class OrderControllerOld extends Controller
                 }
             }
 
-            if (\App\Addon::where('unique_identifier', 'affiliate_system')->first() != null && \App\Addon::where('unique_identifier', 'affiliate_system')->first()->activated) {
-                $affiliateController = new AffiliateController;
-                $affiliateController->processAffiliatePoints($order);
-            }
+            // if (\App\Addon::where('unique_identifier', 'affiliate_system')->first() != null && \App\Addon::where('unique_identifier', 'affiliate_system')->first()->activated) {
+            //     $affiliateController = new AffiliateController;
+            //     $affiliateController->processAffiliatePoints($order);
+            // }
 
-            if (\App\Addon::where('unique_identifier', 'club_point')->first() != null && \App\Addon::where('unique_identifier', 'club_point')->first()->activated) {
-                $clubpointController = new ClubPointController;
-                $clubpointController->processClubPoints($order);
-            }
+            // if (\App\Addon::where('unique_identifier', 'club_point')->first() != null && \App\Addon::where('unique_identifier', 'club_point')->first()->activated) {
+            //     $clubpointController = new ClubPointController;
+            //     $clubpointController->processClubPoints($order);
+            // }
 
             $order->commission_calculated = 1;
             $order->save();
         }
 
-        if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated && \App\OtpConfiguration::where('type', 'otp_for_paid_status')->first()->value){
-            try {
-                $otpController = new OTPVerificationController;
-                $otpController->send_payment_status($order);
-            } catch (\Exception $e) {
-            }
-        }
+        // if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated && \App\OtpConfiguration::where('type', 'otp_for_paid_status')->first()->value){
+        //     try {
+        //         $otpController = new OTPVerificationController;
+        //         $otpController->send_payment_status($order);
+        //     } catch (\Exception $e) {
+        //     }
+        // }
         return 1;
     }
 

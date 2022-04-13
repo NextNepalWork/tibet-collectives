@@ -537,21 +537,31 @@ class OrderController extends Controller
         $order = Order::findOrFail($request->order_id);
         $order->delivery_viewed = '0';
         $order->save();
-        if (Auth::user()->user_type == 'admin' || Auth::user()->user_type == 'seller') {
+        $delivery_status ='';
+        if (Auth::user()->user_type == 'admin') {
+            foreach ($order->orderDetails as $key => $orderDetail) {
+                $orderDetail->delivery_status = $request->status;
+                $orderDetail->save();
+                $delivery_status = $orderDetail->delivery_status;
+            }
+        }elseif(Auth::user()->user_type == 'seller'){
             foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail) {
                 $orderDetail->delivery_status = $request->status;
                 $orderDetail->save();
+                $delivery_status = $orderDetail->delivery_status;
             }
+
         } else {
             foreach ($order->orderDetails->where('seller_id', \App\User::where('user_type', 'admin')->first()->id) as $key => $orderDetail) {
                 $orderDetail->delivery_status = $request->status;
                 $orderDetail->save();
+                $delivery_status = $orderDetail->delivery_status;
             }
         }
-        if ($order && $orderDetail) {
+        if ($order && $delivery_status) {
             try {
                 $order_code = $order->code;
-                $delivery_status = $orderDetail->delivery_status;
+                $delivery_status = $delivery_status;
                 switch ($delivery_status) {
                     case 'pending':
                         $delivery_stat = 'Pending';
@@ -598,7 +608,12 @@ class OrderController extends Controller
         $order->payment_status_viewed = '0';
         $order->save();
 
-        if (Auth::user()->user_type == 'admin' || Auth::user()->user_type == 'seller') {
+        if (Auth::user()->user_type == 'admin') {
+            foreach ($order->orderDetails as $key => $orderDetail) {
+                $orderDetail->payment_status = $request->status;
+                $orderDetail->save();
+            }
+        }elseif(Auth::user()->user_type == 'seller'){            
             foreach ($order->orderDetails->where('seller_id', Auth::user()->id) as $key => $orderDetail) {
                 $orderDetail->payment_status = $request->status;
                 $orderDetail->save();
@@ -607,9 +622,9 @@ class OrderController extends Controller
             foreach ($order->orderDetails->where('seller_id', \App\User::where('user_type', 'admin')->first()->id) as $key => $orderDetail) {
                 $orderDetail->payment_status = $request->status;
                 $orderDetail->save();
+                return 'paid';
             }
         }
-
         $status = 'paid';
         foreach ($order->orderDetails as $key => $orderDetail) {
             if ($orderDetail->payment_status != 'paid') {
@@ -690,14 +705,14 @@ class OrderController extends Controller
             $order->save();
         }
 
-        if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated && \App\OtpConfiguration::where('type', 'otp_for_paid_status')->first()->value) {
-            try {
-                $otpController = new OTPVerificationController;
-                $otpController->send_payment_status($order);
-            } catch (\Exception $e) {
-            }
-        }
-        return 1;
+        // if (\App\Addon::where('unique_identifier', 'otp_system')->first() != null && \App\Addon::where('unique_identifier', 'otp_system')->first()->activated && \App\OtpConfiguration::where('type', 'otp_for_paid_status')->first()->value) {
+        //     try {
+        //         $otpController = new OTPVerificationController;
+        //         $otpController->send_payment_status($order);
+        //     } catch (\Exception $e) {
+        //     }
+        // }
+        return $order->payment_status;
     }
 
     private function __deleteRelatedOrderDetails($id)
