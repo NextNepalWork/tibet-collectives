@@ -375,7 +375,7 @@ h6.active-item {
     </script>
     <script src="{{asset('frontend/assets/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('css/swiper.min.js')}}"></script>
-    <script src="https://k1ngzed.com/dist/EasyZoom/easyzoom.js"></script>
+    {{-- <script src="https://k1ngzed.com/dist/EasyZoom/easyzoom.js"></script> --}}
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 
     
