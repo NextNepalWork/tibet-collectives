@@ -4181,7 +4181,7 @@ ol {
     top: 100px;
     width: 350px;
     background: #fff;
-    z-index: 99;
+    z-index: 100;
     text-align: left;
     padding: 30px;
     opacity: 0;
