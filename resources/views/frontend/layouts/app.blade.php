@@ -98,8 +98,7 @@
 <!-- color theme -->
 <link href="{{ asset('frontend/css/colors/'.\App\GeneralSetting::first()->frontend_color.'.css')}}" rel="stylesheet" media="all">
 
-<link rel="stylesheet" href="https://k1ngzed.com/dist/swiper/swiper.min.css" />
-<link rel="stylesheet" href="https://k1ngzed.com/dist/EasyZoom/easyzoom.css" />
+<link rel="stylesheet" href="{{asset('css/swiper.min.css')}}" />
 
 <!-- Custom style -->
 {{-- <link type="text/css" href="{{ asset('frontend/css/custom-style.css') }}" rel="stylesheet" media="all"> --}}
@@ -375,8 +374,8 @@ h6.active-item {
         eval(mod_pagespeed_gwflC3jfEs);
     </script>
     <script src="{{asset('frontend/assets/js/owl.carousel.min.js')}}"></script>
-    <script src="https://k1ngzed.com/dist/swiper/swiper.min.js"></script>
-    <script src="https://k1ngzed.com/dist/EasyZoom/easyzoom.js"></script>
+    <script src="{{asset('css/swiper.min.js')}}"></script>
+    {{-- <script src="https://k1ngzed.com/dist/EasyZoom/easyzoom.js"></script> --}}
     <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 
     

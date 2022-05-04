@@ -846,4 +846,4 @@ $('.gallery-top').css('height', productCarouselTopWidth);
 let productCarouselThumbsItemWith = $('.gallery-thumbs .swiper-slide').outerWidth();
 $('.gallery-thumbs').css('height', productCarouselThumbsItemWith);
 // activation zoom plugin
-var $easyzoom = $('.easyzoom').easyZoom();
+// var $easyzoom = $('.easyzoom').easyZoom();
