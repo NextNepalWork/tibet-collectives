@@ -334,6 +334,9 @@
                                 <li class="{{ areActiveRoutes(['generalsettings.logo'])}}">
                                     <a class="nav-link" href="{{route('generalsettings.logo')}}">{{__('Logo Settings')}}</a>
                                 </li>
+                                <li class="{{ areActiveRoutes(['blog.index'])}}">
+                                    <a class="nav-link" href="{{route('blog.index')}}">{{__('Blogs')}}</a>
+                                </li>
                             </ul>
                         </li>
                         @endif

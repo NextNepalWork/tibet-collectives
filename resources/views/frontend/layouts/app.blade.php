@@ -257,6 +257,14 @@ h6.active-item {
     background: #1b2743;
     color: white!important;
 }
+.whatsapp-chat{
+    display: flex;
+    justify-content: end;
+    position:fixed;
+    top: 85%;
+    left:95%;
+    z-index:1;
+}
 </style>
 
 </head>
@@ -272,6 +280,11 @@ h6.active-item {
 
     @yield('content')
 
+    <div class="whatsapp-chat">
+        <a href="https://wa.me/9779803672158" target="_blank">
+            <img src="{{asset('frontend/assets/img/whatsapp.png')}}" style="max-height:60px; max-width:60px; ">
+        </a>
+    </div>
     @include('frontend.inc.footer')
 
     @include('frontend.partials.modal')
