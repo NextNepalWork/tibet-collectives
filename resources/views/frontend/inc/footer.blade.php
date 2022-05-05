@@ -35,21 +35,22 @@
                     <ul>
                         <li><a href="{{route('privacypolicy')}}">Privacy Policy</a></li>
                         <li><a href="{{route('terms')}}">Terms and Conditions</a></li>
-                        <li><a href="{{route('sellerpolicy')}}">Seller Policy</a></li>
+                        <li><a href="{{route('returnpolicy')}}">Return Policy</a></li>
                         <li><a href="{{route('supportpolicy')}}">Support</a></li>
+
                     </ul>
                 </div>
             </div>
             <div class="col-lg-2 col-md-6 col-12">
                 <div class="footer-widget">
-                    <h5>My Account</h5>
+                    <h5>Quick Links</h5>
                     <ul>
                         @auth
                         <li><a href="{{route('dashboard')}}">My Account</a></li>
                         @endauth
                         <li><a href="{{route('contact')}}">Contact</a></li>
-                        <li><a href="#">Shopping Cart</a></li>
                         <li><a href="{{route('products')}}">Shop</a></li>
+                        <li><a href="{{route('blogs')}}">Blogs</a></li>
                     </ul>
                 </div>
             </div>
@@ -84,7 +85,7 @@
                         Nepal</a>
                     </div>
                     <div class="payment-pic">
-                        <img src="{{asset('frontend/assets/img/xpayment-method.png.pagespeed.ic.NFJSoRUQiz.png')}}" alt="">
+                        <img src="{{asset('frontend/assets/img/payment.png')}}" alt="">
                     </div>
                 </div>
             </div>

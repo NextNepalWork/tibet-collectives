@@ -131,9 +131,7 @@ class EsewaController extends Controller
   
     public function fail()
     {
-   
-        abort(404);
-       
+        abort(404);   
     }
 
 

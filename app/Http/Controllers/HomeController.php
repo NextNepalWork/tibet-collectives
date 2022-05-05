@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Blog;
 use Illuminate\Http\Request;
 use Session;
 use Auth;
@@ -776,5 +777,16 @@ class HomeController extends Controller
         }
         flash("Message sent")->success();
         return redirect()->back()->with('success','Message sent');
+    }
+
+
+    public function blogs(){
+        $blogs=Blog::where('published',1)->inRandomOrder()->get();
+        return view('frontend.blog.index',compact('blogs'));
+    }
+    public function blog_detail($id){
+        $blogs=Blog::where('published',1)->latest()->limit(5)->get();
+        $blog=Blog::find(decrypt($id));
+        return view('frontend.blog.detail',compact('blog','blogs'));
     }
 }

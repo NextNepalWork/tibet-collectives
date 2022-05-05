@@ -2,7 +2,7 @@
     $generalsetting = \App\GeneralSetting::first();
 @endphp
 <header class="header-section">
-    @if ($generalsetting->pop_status == 1 && $generalsetting->pop_img != null)
+    {{-- @if ($generalsetting->pop_status == 1 && $generalsetting->pop_img != null)
     @if(Route::is('home'))
     <div class="video-wrapper">
         <video loop autoplay muted style="width: 100%;">
@@ -10,7 +10,7 @@
         </video>
     </div>
     @endif
-    @endif
+    @endif --}}
     <div class="header-top">
         <div class="container">
             <div class="ht-left">

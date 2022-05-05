@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="col-lg-5 col-md-6 col-12">
-                <div class="d-flex justify-content-center h-100 product-detail flex-column">
+                <div class="d-flex h-100 product-detail flex-column">
                     <div class="about my-2">
                         <div class="d-flex flex-row align-items-center mb-2">
                             <h3 class="font-weight-bold m-0">{{$detailedProduct->name}}</h3>
@@ -259,6 +259,9 @@
                             </a>
                         @endif
 
+                    </div>
+                    <div class="trust-badges mt-3">
+                        <img class=" lazyloaded" data-src="//cdn.shopify.com/s/files/1/0593/6424/5668/files/trust_buadges_600x.png?v=1646984995" alt="" src="//cdn.shopify.com/s/files/1/0593/6424/5668/files/trust_buadges_600x.png?v=1646984995">
                     </div>
                 </div>
             </div>
