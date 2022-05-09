@@ -109,9 +109,9 @@ Route::group(['prefix' =>'admin', 'middleware' => ['auth', 'admin']], function()
 
 	Route::get('/frontend_settings/home', 'HomeController@home_settings')->name('home_settings.index');
 	Route::post('/frontend_settings/home/top_10', 'HomeController@top_10_settings')->name('top_10_settings.store');
-	Route::get('/sellerpolicy/{type}', 'PolicyController@index')->name('sellerpolicy.index');
+	Route::get('/refundpolicy/{type}', 'PolicyController@index')->name('sellerpolicy.index');
 	Route::get('/returnpolicy/{type}', 'PolicyController@index')->name('returnpolicy.index');
-	Route::get('/supportpolicy/{type}', 'PolicyController@index')->name('supportpolicy.index');
+	Route::get('/shippingpolicy/{type}', 'PolicyController@index')->name('supportpolicy.index');
 	Route::get('/terms/{type}', 'PolicyController@index')->name('terms.index');
 	Route::get('/privacypolicy/{type}', 'PolicyController@index')->name('privacypolicy.index');
 

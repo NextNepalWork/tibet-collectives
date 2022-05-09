@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <div class="breadcrumb-text">
                     <a href="{{route('home')}}"><i class="fa fa-home"></i> Home</a>
-                    <span>Support Policy</span>
+                    <span>Shipping Policy</span>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
                 <div class="col">
                     <div class="p-4 bg-white">
                         @php
-                            echo \App\Policy::where('name', 'support_policy')->first()->content;
+                            echo \App\Policy::where('name', 'shipping_policy')->first()->content;
                         @endphp
                     </div>
                 </div>

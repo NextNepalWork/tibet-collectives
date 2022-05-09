@@ -305,13 +305,13 @@
                                     <ul class="collapse">
 
                                         <li class="{{ areActiveRoutes(['sellerpolicy.index'])}}">
-                                            <a class="nav-link" href="{{route('sellerpolicy.index', 'seller_policy')}}">{{__('Seller Policy')}}</a>
+                                            <a class="nav-link" href="{{route('sellerpolicy.index', 'refund_policy')}}">{{__('Refund Policy')}}</a>
                                         </li>
                                         <li class="{{ areActiveRoutes(['returnpolicy.index'])}}">
-                                            <a class="nav-link" href="{{route('returnpolicy.index', 'return_policy')}}">{{__('Return Policy')}}</a>
+                                            <a class="nav-link" href="{{route('returnpolicy.index', 'return_policy')}}">{{__('Return & Refunds')}}</a>
                                         </li>
                                         <li class="{{ areActiveRoutes(['supportpolicy.index'])}}">
-                                            <a class="nav-link" href="{{route('supportpolicy.index', 'support_policy')}}">{{__('Support Policy')}}</a>
+                                            <a class="nav-link" href="{{route('supportpolicy.index', 'shipping_policy')}}">{{__('Shipping Policy')}}</a>
                                         </li>
                                         <li class="{{ areActiveRoutes(['terms.index'])}}">
                                             <a class="nav-link" href="{{route('terms.index', 'terms')}}">{{__('Terms & Conditions')}}</a>

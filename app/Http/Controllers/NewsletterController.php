@@ -31,7 +31,8 @@ class NewsletterController extends Controller
                     try {
                         Mail::to($email)->queue(new EmailManager($array));
                     } catch (\Exception $e) {
-                        dd($e);
+                        flash(__('Error!!Mail not send..'))->error();
+                        return back();
                     }
             	}
             }
@@ -47,7 +48,8 @@ class NewsletterController extends Controller
                     try {
                         Mail::to($email)->queue(new EmailManager($array));
                     } catch (\Exception $e) {
-                        dd($e);
+                        flash(__('Error!!Mail not send..'))->error();
+                        return back();
                     }
             	}
             }

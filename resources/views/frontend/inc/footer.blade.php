@@ -35,8 +35,9 @@
                     <ul>
                         <li><a href="{{route('privacypolicy')}}">Privacy Policy</a></li>
                         <li><a href="{{route('terms')}}">Terms and Conditions</a></li>
-                        <li><a href="{{route('returnpolicy')}}">Return Policy</a></li>
-                        <li><a href="{{route('supportpolicy')}}">Support</a></li>
+                        <li><a href="{{route('returnpolicy')}}">Return & Refunds</a></li>
+                        <li><a href="{{route('supportpolicy')}}">Shipping Policy</a></li>
+                        <li><a href="{{route('sellerpolicy')}}">Refund Policy</a></li>
 
                     </ul>
                 </div>

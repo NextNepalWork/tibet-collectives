@@ -10,7 +10,13 @@ class PolicyController extends Controller
 
     public function index($type)
     {
+
         $policy = Policy::where('name', $type)->first();
+        if(empty($policy)){
+            $policy=new Policy();
+            $policy->name=$type;
+            $policy->save();
+        }
         return view('policies.index', compact('policy'));
     }
 
