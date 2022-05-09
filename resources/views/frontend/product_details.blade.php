@@ -281,78 +281,88 @@
                 </div>
                 <div class="tab-pane fade p-3" id="second" role="tabpanel" aria-labelledby="second-tab">
                     <div class="row">
-                    @if(count($detailedProduct->reviews)>0)
-                        @foreach ($detailedProduct->reviews as $key => $review)
-                        <div class="col-xl-8 col-lg-8 col-12 comments-content p-4 my-3 bg-light">
-                            <h5 class="mb-2">{{$review->user->name}}</h5>
-                            <div class="p-ratings"> 
-                                @for ($i=0; $i < $review->rating; $i++)
-                                    <span><i class="fa fa-star"></i></span>
-                                @endfor
-                                @for ($i=0; $i < 5-$review->rating; $i++)
-                                    <span><i class="fa fa-star inactive"></i></span>
-                                @endfor
+                        <div class="col-xl-7 col-lg-7 col-12">
+                        @if(count($detailedProduct->reviews)>0)
+                            @foreach ($detailedProduct->reviews as $key => $review)
+                            <div class="col-12 comments-content p-4 my-3 bg-light">
+                                <h5 class="mb-2">{{$review->user->name}}</h5>
+                                <div class="p-ratings"> 
+                                    @for ($i=0; $i < $review->rating; $i++)
+                                        <span><i class="fa fa-star"></i></span>
+                                    @endfor
+                                    @for ($i=0; $i < 5-$review->rating; $i++)
+                                        <span><i class="fa fa-star inactive"></i></span>
+                                    @endfor
+                                </div>
+                                <p>{!! $review->comment !!}</p>
+                                <small class="review-date">{{ date('d-m-Y', strtotime($review->created_at)) }}</small>
                             </div>
-                            <p>{!! $review->comment !!}</p>
-                            <small class="review-date">{{ date('d-m-Y', strtotime($review->created_at)) }}</small>
-                        </div>
-                        @endforeach
-                    @else
-                        <div class="media review-block mb-4">
-                            <div class="text-center">
-                                {{ __('There have been no reviews for this product yet.') }}
+                            @endforeach
+                        @else
+                            <div class="media review-block mb-4">
+                                <div class="text-center">
+                                    {{ __('There have been no reviews for this product yet.') }}
+                                </div>
                             </div>
+                        @endif
                         </div>
-                    @endif
-                    @if(Auth::check())
-                        @php
-                            $commentable = false;
-                        @endphp
-                        @foreach ($detailedProduct->orderDetails as $key => $orderDetail)
-                            @if($orderDetail->order != null && $orderDetail->order->user_id == Auth::user()->id && $orderDetail->delivery_status == 'delivered' && \App\Review::where('user_id', Auth::user()->id)->where('product_id', $detailedProduct->id)->first() == null)
+                        <div class="col-xl-5 col-lg-5 col-12">
+                            
+                        @if(Auth::check())
+                            @php
+                                $commentable = false;
+                            @endphp
+                            @if (Auth::user()->user_type=='admin')
                                 @php
                                     $commentable = true;
                                 @endphp
+                            @else
+                            @foreach ($detailedProduct->orderDetails as $key => $orderDetail)
+                                @if($orderDetail->order != null && $orderDetail->order->user_id == Auth::user()->id && $orderDetail->delivery_status == 'delivered' && \App\Review::where('user_id', Auth::user()->id)->where('product_id', $detailedProduct->id)->first() == null)
+                                    @php
+                                        $commentable = true;
+                                    @endphp
+                                @endif
+                            @endforeach
                             @endif
-                        @endforeach
-                        {{-- @if ($commentable) --}}
-                            <div class="col-lg-4">
-                                <div class="review-comment mt-5 mt-lg-0">
-                                    <h4 class="mb-3">Add a Review</h4>
-                                    <form role="form" action="{{ route('reviews.store') }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="product_id" value="{{ $detailedProduct->id }}">
-                                        <div class="c-rating mt-1 mb-1 clearfix d-inline-block">
-                                            <input type="radio" id="star1" name="rating" value="1" required/>
-                                            <label class="tf-ion-android-star" for="star1" title="Bad" aria-hidden="true"></label>
-                                            <input type="radio" id="star2" name="rating" value="2" required/>
-                                            <label class="tf-ion-android-star" for="star2" title="Good" aria-hidden="true"></label>
-                                            <input type="radio" id="star3" name="rating" value="3" required/>
-                                            <label class="tf-ion-android-star" for="star3" title="Very good" aria-hidden="true"></label>
-                                            <input type="radio" id="star4" name="rating" value="4" required/>
-                                            <label class="tf-ion-android-star" for="star4" title="Great" aria-hidden="true"></label>
-                                            <input type="radio" id="star5" name="rating" value="5" required/>
-                                            <label class="tf-ion-android-star" for="star5" title="Awesome" aria-hidden="true"></label>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control" disabled required>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" name="email" value="{{ Auth::user()->email }}" class="form-control" required disabled>
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea class="form-control" rows="4" name="comment" placeholder="{{__('Your review')}}" required></textarea>
-                                        </div>
-                                        <button type="submit" class="primary-btn my-2">
-                                            {{__('Send review')}}
-                                        </button>
-                                    </form>
+
+                            @if ($commentable)
+                                <div class="col-12">
+                                    <div class="review-comment mt-5 mt-lg-0">
+                                        <h4 class="mb-3">Add a Review</h4>
+                                        <form role="form" action="{{ route('reviews.store') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $detailedProduct->id }}">
+                                            <div class="c-rating mt-1 mb-1 clearfix d-inline-block">
+                                                <input type="radio" id="star5" name="rating" value="5" required/>
+                                                <label class="tf-ion-android-star" for="star5" title="Awesome" aria-hidden="true"></label>
+                                                <input type="radio" id="star4" name="rating" value="4" required/>
+                                                <label class="tf-ion-android-star" for="star4" title="Great" aria-hidden="true"></label>
+                                                <input type="radio" id="star3" name="rating" value="3" required/>
+                                                <label class="tf-ion-android-star" for="star3" title="Very good" aria-hidden="true"></label>
+                                                <input type="radio" id="star2" name="rating" value="2" required/>
+                                                <label class="tf-ion-android-star" for="star2" title="Good" aria-hidden="true"></label>
+                                                <input type="radio" id="star1" name="rating" value="1" required/>
+                                                <label class="tf-ion-android-star" for="star1" title="Bad" aria-hidden="true"></label>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="name" value="{{ Auth::user()->name }}" class="form-control" disabled required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="email" value="{{ Auth::user()->email }}" class="form-control" required disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <textarea class="form-control" rows="4" name="comment" placeholder="{{__('Your review')}}" required></textarea>
+                                            </div>
+                                            <button type="submit" class="primary-btn my-2">
+                                                {{__('Send review')}}
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                        {{-- @else
-                        <p>You need to buy product to give review.</p>
-                        @endif --}}
-                    @endif
+                            @endif
+                        @endif
+                        </div>
                     </div>
 
                 </div>

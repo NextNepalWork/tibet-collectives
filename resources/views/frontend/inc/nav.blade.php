@@ -16,8 +16,7 @@
             <div class="ht-left">
                 <div class="mail-service">
                     
-                    <a href="mailto:{{ $generalsetting->email  }}" class="__cf_email__"
-                        data-cfemail="244c4148484b0a474b484b56484d46644349454d480a474b49">
+                    <a href="mailto:{{ $generalsetting->email  }}" >
                         <i class=" fa fa-envelope"></i>
                         {{ $generalsetting->email  }}
                     </a>
@@ -219,6 +218,7 @@
                     <li class="{{ Route::is('products') ? 'active' : '' }}"><a href="{{route('products')}}">Collection</a></li>
                     {{-- <li><a href="dashboard.html">Dashboard</a></li> --}}
                     <li class="{{ Route::is('contact') ? 'active' : '' }}"><a href="{{route('contact')}}">Contact</a></li>
+                    <li class="{{ Route::is('frontend.review') ? 'active' : '' }}"><a href="{{route('frontend.review')}}">Reviews</a></li>
                     <li><a href="#">My Account</a>
                         <ul class="dropdown p-0">
                             @auth
@@ -240,6 +240,7 @@
                             <li><a href="login.html">Login</a></li> --}}
                         </ul>
                     </li>
+
                 </ul>
             </nav>
             <div id="mobile-menu-wrap" class="d-lg-none d-block"></div>

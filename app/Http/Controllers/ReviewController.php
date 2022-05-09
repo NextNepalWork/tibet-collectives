@@ -51,6 +51,11 @@ class ReviewController extends Controller
         //
     }
 
+    public function list(){
+        $reviews = Review::orderBy('created_at', 'desc')->paginate(10);
+        return view('frontend.reviews', compact('reviews'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -61,7 +66,9 @@ class ReviewController extends Controller
     {
         $review = new Review;
         $review->product_id = $request->product_id;
-        $review->user_id = Auth::user()->id;
+        if(Auth::check()){
+            $review->user_id = Auth::user()->id;
+        }
         $review->rating = $request->rating;
         $review->comment = $request->comment;
         $review->viewed = '0';
