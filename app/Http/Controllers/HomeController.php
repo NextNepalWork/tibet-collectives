@@ -688,8 +688,9 @@ class HomeController extends Controller
     }
 
     public function supportpolicy(){
-        return view("frontend.policies.supportpolicy");
+        return view("frontend.policies.shippingpolicy");
     }
+
 
     public function terms(){
         return view("frontend.policies.terms");

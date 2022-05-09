@@ -147,9 +147,9 @@ Route::get('/search?q={search}', 'HomeController@search')->name('suggestion.sear
 Route::post('/ajax-search', 'HomeController@ajax_search')->name('search.ajax');
 Route::post('/config_content', 'HomeController@product_content')->name('configs.update_status');
 
-Route::get('/sellerpolicy', 'HomeController@sellerpolicy')->name('sellerpolicy');
+Route::get('/refundpolicy', 'HomeController@sellerpolicy')->name('sellerpolicy');
 Route::get('/returnpolicy', 'HomeController@returnpolicy')->name('returnpolicy');
-Route::get('/supportpolicy', 'HomeController@supportpolicy')->name('supportpolicy');
+Route::get('/shippingpolicy', 'HomeController@supportpolicy')->name('supportpolicy');
 Route::get('/terms', 'HomeController@terms')->name('terms');
 Route::get('/privacypolicy', 'HomeController@privacypolicy')->name('privacypolicy');
 Route::get('/blogs', 'HomeController@blogs')->name('blogs');
