@@ -13,6 +13,7 @@
 
 //demo
 
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\SitemapXmlController;
 
 Route::get('/demo/cron_1', 'DemoController@cron_1');
@@ -219,6 +220,9 @@ Route::group(['prefix' =>'seller', 'middleware' => ['seller', 'verified']], func
 	Route::get('/digitalproducts/{id}/edit', 'HomeController@show_digital_product_edit_form')->name('seller.digitalproducts.edit');
 });
 
+
+
+
 Route::group(['middleware' => ['auth']], function(){
 	Route::post('/products/store/','ProductController@store')->name('products.store');
 	Route::post('/products/update/{id}','ProductController@update')->name('products.update');
@@ -239,7 +243,6 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::post('/orders/update_delivery_status', 'OrderController@update_delivery_status')->name('orders.update_delivery_status');
 	Route::post('/orders/update_payment_status', 'OrderController@update_payment_status')->name('orders.update_payment_status');
 	Route::get('seller-orders', 'OrderController@seller_orders')->name('orders.seller');
-
 
 	Route::resource('/reviews', 'ReviewController');
 
@@ -272,6 +275,7 @@ Route::group(['middleware' => ['auth']], function(){
 	Route::get('/digitalproducts/destroy/{id}', 'DigitalProductController@destroy')->name('digitalproducts.destroy');
 	Route::get('/digitalproducts/download/{id}', 'DigitalProductController@download')->name('digitalproducts.download');
 });
+Route::get('/reviews','ReviewController@list')->name('frontend.review');
 
 Route::resource('shops', 'ShopController');
 Route::get('/track_your_order', 'HomeController@trackOrder')->name('orders.track');
