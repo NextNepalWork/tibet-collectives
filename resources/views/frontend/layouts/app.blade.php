@@ -265,6 +265,20 @@ h6.active-item {
     left:95%;
     z-index:1;
 }
+
+@media only screen and (min-width: 1200px) and (max-width: 1920px) {
+    .inner-header .advanced-search .input-group button {
+        right: -14px;
+    }
+
+    .product-item .pi-pic ul li a {
+        padding: 16px 12px 12px 11px;
+    }
+
+    .nav-item .nav-menu li a {
+        padding: 16px 30px 15px;
+    }
+}
 </style>
 
 </head>
